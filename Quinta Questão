@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+      
+      Scanner sc = new Scanner(System.in);
+      
+      //matriz 7x7 do tempo de viagem
+        int[][] Matriz = {
+                {0, 2, 11, 6, 15, 11, 1},
+                {2, 0, 7, 12, 4, 2, 15},
+                {11, 7, 0, 11, 8, 3, 13},
+                {6, 12, 11, 0, 10, 2, 1},
+                {15, 4, 8, 10, 0, 5, 13},
+                {11, 2, 3, 2, 5, 0, 14},
+                {1, 15, 13, 1, 13, 14, 0}
+        };
+        
+        //usando .length, não precisa especificar o tamanho da matriz
+        for(int linha = 0; linha < Matriz.length; linha++) { 
+            //o for da coluna dentro do da linha, para assim, dentro da mesma linha, contar todas as colunas para depois ir para a proxima linha
+            for(int coluna =0; coluna < Matriz[0].length; coluna++) { 
+                //Esses sinais (" - ") são apenas pela estetica da matriz quando for impressa
+                System.out.print(" - " + Matriz[linha][coluna]+"  -  " ); 
+            }
+        //println faz com que haja quebra de linha, tambem poderia usar printf(%n) que têm a mesma função
+        System.out.println("");  
+        }
+
+        System.out.print("Informe a cidade de origem: ");
+        int origem = sc.nextInt();
+        System.out.print("Informe a primeira cidade de descanso: ");
+        int descanso1 = sc.nextInt();
+        System.out.print("Informe a segunda cidade de descanso: ");
+        int descanso2 = sc.nextInt();
+        System.out.print("Informe a cidade de destino: ");
+        int destino = sc.nextInt();
+        
+        // calcular o tempo de cada parada da viagem, para depois descobrir a de menor duração.
+        int OrigemDescanso1 = Matriz[origem - 1][descanso1 - 1];
+        int Descanso1Destino = Matriz[descanso1 - 1][destino - 1] ;
+        int OrigemDescanso2 = Matriz[origem - 1][descanso2 - 1];
+        int Descanso2Destino = Matriz[descanso2 - 1][destino - 1];
+        // Soma para descobrir o tempo total das opções de viagem
+        int tempoD1 = OrigemDescanso1 + Descanso1Destino;
+        int tempoD2 = OrigemDescanso2 + Descanso2Destino;
+
+        //operador ternário "expressao_condicional ? valor_se_verdadeiro : valor_se_falso;" que serve como forma compacta de usar a ideia de if-else.
+        String melhorOpcao = (tempoD1 < tempoD2) ? "Primeira cidade de descanso" : "Segunda cidade de descanso"; 
+
+        // Imprimir resultado
+        System.out.println("A melhor opção de cidade de descanso é: " + melhorOpcao);
+
+    }
+}
