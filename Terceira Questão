@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        // criação de matriz 7x7
+        int[][]Matriz = {
+            {0, 2, 11, 6, 15, 11, 1},
+            {2, 0, 7, 12, 4, 2, 15},
+            {11, 7, 0, 11, 8, 3, 13},
+            {6, 12, 11, 0, 10, 2, 1},
+            {15, 4, 8, 10, 0, 5, 13},
+            {11, 2, 3, 2, 5, 0, 14},
+            {1, 15, 13, 1, 13, 14, 0}
+    };
+
+        //usando .length, não precisa especificar o tamanho da matriz
+        for(int linha = 0; linha < Matriz.length; linha++) { 
+            //o for da coluna dentro do da linha, para assim, dentro da mesma linha, contar todas as colunas para depois ir para a proxima linha
+            for(int coluna =0; coluna < Matriz[0].length; coluna++) { 
+                //Esses sinais (" - ") são apenas pela estetica da matriz quando for impressa
+                System.out.print(" - " + Matriz[linha][coluna]+"  -  " ); 
+            }
+        //println faz com que haja quebra de linha, tambem poderia usar printf(%n) que têm a mesma função
+        System.out.println("");  
+        }
+
+        // declarando a variavel "horas" para receber algum valor mais para frente
+        int horas; 
+
+        do{
+            System.out.print(" Informe sua cidade origem e o destino que deseja.");
+            //("-1") para a tabela que começa em "1" se encaixar com a matriz que começa em "0"
+        int origem = sc.nextInt()-1; 
+        int destino = sc.nextInt()-1; 
+         horas = Matriz[origem][destino];
+
+         //qualquer resultado que não seja 0 horas vai fazer com que repita o codigo
+            if(horas == 0) {
+                System.out.printf("Você chegou ao seu destino");
+            } else { 
+                System.out.print("Sua viagem levará " + horas + " horas.");
+            }
+        // do while vai fazer com que esse codigo seja impresso pelo menos uma vez.
+        }while(horas != 0); 
+    }
+}
