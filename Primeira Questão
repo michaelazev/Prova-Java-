@@ -1,0 +1,33 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Random rand = new Random();
+        Scanner sc = new Scanner(System.in);
+        
+        //como o random iria de 0 a 99, ao colocar +1, vai ficar 1 a 100, exatamente como a questão pede
+        int numero = rand.nextInt(100)+1; 
+        // declarando a variavel que vai servir como contador de vezes que tentou
+        int tentativas = 0; 
+        int chute;
+        
+        System.out.println("Tente acertar o numero, de 1 a 100");
+        
+       do{
+           //variavel correspondente ao chute do jogador
+            chute = sc.nextInt(); 
+            tentativas++;
+           
+        if (chute > numero ) {
+          System.out.println("errou! tente um numero menor");
+        } else if (chute < numero ) {
+          System.out.println("passou baixo! tente um numero maior");
+        } else {
+          System.out.println("parábens!! você acertou"); 
+        } //(do while) vai se repetir até que "chute" seja o mesmo valor que "numero"
+       } while(chute != numero);
+       
+          System.out.println("A quantidade de tentativas foi " + tentativas);
+    }
+}
