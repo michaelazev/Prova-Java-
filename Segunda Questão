@@ -1,24 +1,17 @@
-import java.util.Random;
+public class Main {
 
-public class dois {
     public static void main(String[] args) {
-        
+
+        int linhas = 4;
+        int colunas = 7;
+        int[][] temperaturas = new int[linhas][colunas];
+
         Random rand = new Random();
-      int[] temp = new int[28];
-      
-      for( int d = 0; d < 28; d++){
-          temp[d] = 10 + rand.nextint() * 25;
-      }
-      int linha;
-    
-      int coluna;
-      int[][]matrizt = new double [4][7];
-      int d = 0;
-      String[] semanad = {"Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"};
+        for (int i = 0; i < linhas; i++) {
+            for (int j = 0; j < colunas; j++) {
+                temperaturas[i][j] = rand.nextInt(50); 
+            }
+        }
+
+        String[] diasDaSemana = {"Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"};
        
-      for ( int semana = 0; semana < 4; semana++){
-          for (int semanad = 0; semanad < 7; semanad++){
-              matrizt[semanad][semana] = temp[d]; d++;
-          }
-      }
-}
